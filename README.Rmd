@@ -1,0 +1,52 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# scerden.easydoi
+
+A few simple functions to work with doi strings.
+
+## install
+```{r, eval = F}
+devtools::install_github("scerden/scerden.easydoi")
+```
+
+
+
+## demo
+```{r}
+library(scerden.easydoi)
+library(tidyverse)
+```
+Say you extract the following `elocationid` from searching pubmed results with rentrez pkg:  
+```{r}
+x <- "doi: 10.1016/j.molcel.2015.10.023"
+x %>% doi_extract()
+x %>% doi_extract() %>% doi_add_url() # %>% browseURL() # open in browser
+x %>% doi_extract() %>% doi_encode() # %>% dir.create() # use this form to write to file system.
+x %>% doi_extract() %>% doi_decode()
+```
+
+
+
+## pkg creation:
+
+* Prelims  
+```{r, eval = F}
+use_readme_rmd()
+```
+
+* when writing `./R` fxns  
+```{r, eval = F}
+use_package("stringr")
+```
